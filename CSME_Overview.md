@@ -136,3 +136,9 @@ Design notes:
 ---
 
 Created for the FST Security IP Agent workspace. If you want more detailed tables, diagrams, or register-level examples for any block (Gasket, OCS, HECI), tell me which block and I will expand it.
+
+## Getting more information
+
+If you need deeper or more specific details (for example, register maps, code-signing policy, or design rationale), you can request them from the agent by including the tag `@ask_codesign` in your message. The agent will respond with targeted information about code signing, verification steps, and how CSME components (such as the Gasket and OCS) participate in secure boot and firmware authentication.
+
+Note: some internal or sensitive details may be restricted; when that happens the agent will provide the highest-level allowed information and suggest steps to obtain privileged documentation.
