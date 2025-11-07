@@ -1,60 +1,69 @@
-FST_SECURITY_IP_AGENT — VAL Security IP Agent
+# FST_SECURITY_IP_AGENT — VAL Security IP Agent
 ===========================================
 
-This repository hosts a Validation Security IP Agent and supporting documentation for CSME (Converged Security and Manageability Engine) validation and design collaboration.
+> _A Validation Security IP Agent for **CSME** (Converged Security and Manageability Engine) designed for seamless validation and design collaboration._
 
-Purpose
--------
-
-Provide an in-repo validation assistant for CSME sub-IPs (OCS, Gasket, HECI, etc.) that:
-
-- Acts as a senior validation advisor persona (UVM/OVM, SVA, formal verification expertise).
-- Uses repository documentation (`CSME_Overview.md`, `agent/VALIDATION_AGENT_PERSONA.md`) as canonical context.
-- Helps validators (junior and senior) with verification plans, assertions, UVM sequences, debugging checklists, and ramp-up guides.
-
-Key files
----------
-
-- `CSME_Overview.md` — Architecture-level overview of CSME, major sub-IPs, interactions, and design notes. Use this as the primary context for architecture and mapping verification tasks.
-- `agent/VALIDATION_AGENT_PERSONA.md` — Persona used by the validation agent (Spanish). Explains tone, skills, and suggested outputs.
-- `.github/chatmodes/VAL_SECURITY_IP_AGENT.chatmode.md` — Chat-mode configuration that instructs the agent to load the persona and `CSME_Overview.md` at startup.
-
-How to use (for validators)
----------------------------
-
-1. Open the repository in your editor and review `CSME_Overview.md` to understand the high-level architecture.
-2. Start a chat session with the VAL Security IP Agent (via your integrated chat tooling) using the `VAL_SECURITY_IP_AGENT` chat mode.
-3. Ask concrete requests. Good examples:
-   - "Create SVA assertions to validate DMA descriptor safety in the OCS."
-   - "Draft a UVM test plan for Gasket's access-control registers."
-   - "Generate a 30/60/90 ramp-up plan for a new validator."
-4. If you require register-level or internal documentation that is not present here, request access through official channels; the agent will provide conceptual examples instead.
-
-How to use (for designers)
---------------------------
-
-- Use the agent to validate your design intent by requesting formal properties, coverage goals, and test scenarios.
-- Provide the agent with interface descriptions or example RTL snippets (non-confidential) to get targeted assertions and UVM sequences.
-
-Agent behavior & safety
------------------------
-
-- The agent adopts the persona defined in `agent/VALIDATION_AGENT_PERSONA.md` and uses `CSME_Overview.md` for technical context.
-- It will not request or reveal secrets or PII. It will refuse or limit responses when asked for restricted content and will instead provide high-level guidance.
-
-Contributing
-------------
-
-- Add or update the `CSME_Overview.md` and persona files to keep context accurate.
-- If you extend the agent behavior, update `.github/chatmodes/VAL_SECURITY_IP_AGENT.chatmode.md` accordingly.
-
-Next steps and ideas
---------------------
-
-- Add example UVM sequences and SVA assertions in an `examples/` directory.
-- Add automated validation scripts that run quick lint and assertion checks against example RTL.
-- Include diagrams (SVG) showing fabrics and data flows.
+This repository hosts a specialized agent and its supporting documentation, tailored to enhance the verification process of critical security IPs.
 
 ---
 
-For questions about this repository or to request privileged documentation, follow your organization's process for obtaining access.
+### Purpose
+-------
+
+The primary goal is to provide an in-repo validation assistant for CSME sub-IPs such as `OCS`, `Gasket`, and `HECI`. This agent is designed to:
+
+- Act as a **senior validation advisor**, embodying a persona with deep expertise in `UVM/OVM`, `SVA`, and formal verification.
+- Utilize repository documentation, including `CSME_Overview.md` and `agent/VALIDATION_AGENT_PERSONA.md`, as its canonical context.
+- Assist both _junior_ and _senior_ validators with:
+  - Verification Plans
+  - Assertions
+  - UVM Sequences
+  - Debugging Checklists
+  - Ramp-up Guides
+
+### Key files
+---------
+
+- **`CSME_Overview.md`**: An essential architecture-level overview of CSME, its major sub-IPs, their interactions, and key design notes. <ins>This should be your primary context for all architectural and verification mapping tasks.</ins>
+- **`agent/VALIDATION_AGENT_PERSONA.md`**: Defines the persona of the validation agent (in Spanish), detailing its tone, skills, and expected outputs.
+- **`.github/chatmodes/VAL_SECURITY_IP_AGENT.chatmode.md`**: The chat-mode configuration that instructs the agent to load its persona and the `CSME_Overview.md` upon startup.
+
+### How to use (for validators)
+---------------------------
+
+1.  Open the repository in your editor and thoroughly review `CSME_Overview.md` to grasp the high-level architecture.
+2.  Initiate a chat session with the **VAL Security IP Agent** using the `VAL_SECURITY_IP_AGENT` chat mode.
+3.  Make concrete requests. For example:
+    - _"Create SVA assertions to validate DMA descriptor safety in the OCS."_
+    - _"Draft a UVM test plan for Gasket's access-control registers."_
+    - _"Generate a 30/60/90 ramp-up plan for a new validator."_
+4.  If you need information on register-level or internal documentation not present here, please request access through official channels. The agent will provide conceptual examples in such cases.
+
+### How to use (for designers)
+--------------------------
+
+- Validate your design intent by requesting **formal properties**, **coverage goals**, and **test scenarios**.
+- Provide interface descriptions or non-confidential RTL snippets to receive targeted assertions and UVM sequences.
+
+### Agent behavior & safety
+-----------------------
+
+- The agent strictly adopts the persona from `agent/VALIDATION_AGENT_PERSONA.md` and relies on `CSME_Overview.md` for technical context.
+- It will **never** request or reveal secrets or PII. Any requests for restricted content will be met with high-level guidance and a refusal to share sensitive details.
+
+### Contributing
+------------
+
+- Keep the `CSME_Overview.md` and persona files updated to ensure context accuracy.
+- If you extend the agent's behavior, remember to update `.github/chatmodes/VAL_SECURITY_IP_AGENT.chatmode.md` accordingly.
+
+### Next steps and ideas
+--------------------
+
+- Populate an `examples/` directory with sample **UVM sequences** and **SVA assertions**.
+- Develop automated validation scripts for quick lint and assertion checks on example RTL.
+- Integrate diagrams (<sup>SVG</sup>) to visualize fabrics and data flows.
+
+---
+
+For any questions about this repository or to request privileged documentation, please follow your organization's established process for obtaining access.
