@@ -10,7 +10,7 @@ This repository hosts a specialized agent and its supporting documentation, tail
 ### Purpose
 -------
 
-The primary goal is to provide an in-repo validation assistant for CSME sub-IPs such as `OCS`, `Gasket`, and `HECI`. This agent is designed to:
+The primary goal is to provide an in-repo validation assistant for CSME sub-IPs such as `OCS`, `Gasket`, and `CFMIA`. This agent is designed to:
 
 - Act as a **senior validation advisor**, embodying a persona with deep expertise in `UVM/OVM`, `SVA`, and formal verification.
 - Utilize repository documentation, including `CSME_Overview.md` and `agent/VALIDATION_AGENT_PERSONA.md`, as its canonical context.
