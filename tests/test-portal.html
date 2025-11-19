@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Test Suite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #0066CC;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .test-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+        }
+        
+        .test-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-pass {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-fail {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .test-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .test-checkbox {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .test-label {
+            flex: 1;
+            cursor: pointer;
+        }
+        
+        .test-result {
+            font-size: 20px;
+        }
+        
+        .test-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: #0066CC;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0052a3;
+        }
+        
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Portal Test Suite</h1>
+        <p class="subtitle">Comprehensive testing checklist for Team Information Portal</p>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="totalTests">0</div>
+                <div class="stat-label">Total Tests</div>
+            </div>
+            <div class="stat-card" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                <div class="stat-value" id="passedTests">0</div>
+                <div class="stat-label">Passed</div>
+            </div>
+            <div class="stat-card" style="background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);">
+                <div class="stat-value" id="failedTests">0</div>
+                <div class="stat-label">Failed</div>
+            </div>
+            <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="stat-value" id="coveragePercent">0%</div>
+                <div class="stat-label">Coverage</div>
+            </div>
+        </div>
+
+        <!-- HTML Validation -->
+        <div class="test-section">
+            <h2>
+                <span>📄 HTML Structure & Validation</span>
+                <span class="status-badge status-pending" id="badge-html">Pending</span>
+            </h2>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-html-1" data-section="html">
+                <label class="test-label" for="test-html-1">Valid HTML5 doctype and lang attribute</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-html-2" data-section="html">
+                <label class="test-label" for="test-html-2">All semantic HTML tags used correctly (header, nav, main, aside, footer)</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-html-3" data-section="html">
+                <label class="test-label" for="test-html-3">Proper meta tags (charset, viewport, description)</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-html-4" data-section="html">
+                <label class="test-label" for="test-html-4">All images have alt attributes</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-html-5" data-section="html">
+                <label class="test-label" for="test-html-5">No broken links or missing resources</label>
+                <span class="test-result">⏳</span>
+            </div>
+        </div>
+
+        <!-- CSS & Design -->
+        <div class="test-section">
+            <h2>
+                <span>🎨 CSS & Design System</span>
+                <span class="status-badge status-pending" id="badge-css">Pending</span>
+            </h2>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-css-1" data-section="css">
+                <label class="test-label" for="test-css-1">CSS variables defined and used consistently</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-css-2" data-section="css">
+                <label class="test-label" for="test-css-2">Typography scales correctly (12px - 40px)</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-css-3" data-section="css">
+                <label class="test-label" for="test-css-3">Color contrast meets WCAG 2.1 AA standards (4.5:1)</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-css-4" data-section="css">
+                <label class="test-label" for="test-css-4">Theme toggle switches between light/dark modes</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-css-5" data-section="css">
+                <label class="test-label" for="test-css-5">All animations and transitions are smooth (0.2s-0.3s)</label>
+                <span class="test-result">⏳</span>
+            </div>
+        </div>
+
+        <!-- Responsive Design -->
+        <div class="test-section">
+            <h2>
+                <span>📱 Responsive Design</span>
+                <span class="status-badge status-pending" id="badge-responsive">Pending</span>
+            </h2>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-resp-1" data-section="responsive">
+                <label class="test-label" for="test-resp-1">Mobile (< 640px): Hamburger menu, stacked layout</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-resp-2" data-section="responsive">
+                <label class="test-label" for="test-resp-2">Tablet (640px - 1024px): 2-column layout, readable text</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-resp-3" data-section="responsive">
+                <label class="test-label" for="test-resp-3">Desktop (1024px - 1440px): 3-column layout, sidebar visible</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-resp-4" data-section="responsive">
+                <label class="test-label" for="test-resp-4">Wide (> 1440px): Content centered, max-width applied</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-resp-5" data-section="responsive">
+                <label class="test-label" for="test-resp-5">Touch targets at least 44x44px on mobile</label>
+                <span class="test-result">⏳</span>
+            </div>
+        </div>
+
+        <!-- JavaScript Functionality -->
+        <div class="test-section">
+            <h2>
+                <span>⚡ JavaScript Functionality</span>
+                <span class="status-badge status-pending" id="badge-js">Pending</span>
+            </h2>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-js-1" data-section="js">
+                <label class="test-label" for="test-js-1">Sidebar collapse/expand works (256px ↔ 64px)</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-js-2" data-section="js">
+                <label class="test-label" for="test-js-2">Search modal opens with Ctrl+K (Cmd+K on Mac)</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-js-3" data-section="js">
+                <label class="test-label" for="test-js-3">Search modal closes with Escape key</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-js-4" data-section="js">
+                <label class="test-label" for="test-js-4">Chat panel accepts messages and shows responses</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-js-5" data-section="js">
+                <label class="test-label" for="test-js-5">Navigation menu expands/collapses Architecture submenu</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-js-6" data-section="js">
+                <label class="test-label" for="test-js-6">Active menu state persists on reload (localStorage)</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-js-7" data-section="js">
+                <label class="test-label" for="test-js-7">Theme preference persists on reload</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-js-8" data-section="js">
+                <label class="test-label" for="test-js-8">No console errors or warnings</label>
+                <span class="test-result">⏳</span>
+            </div>
+        </div>
+
+        <!-- Accessibility -->
+        <div class="test-section">
+            <h2>
+                <span>♿ Accessibility (A11y)</span>
+                <span class="status-badge status-pending" id="badge-a11y">Pending</span>
+            </h2>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-a11y-1" data-section="a11y">
+                <label class="test-label" for="test-a11y-1">All interactive elements reachable via keyboard (Tab)</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-a11y-2" data-section="a11y">
+                <label class="test-label" for="test-a11y-2">Focus indicators visible on all focusable elements</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-a11y-3" data-section="a11y">
+                <label class="test-label" for="test-a11y-3">ARIA labels present on buttons and controls</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-a11y-4" data-section="a11y">
+                <label class="test-label" for="test-a11y-4">Proper heading hierarchy (h1 → h2 → h3)</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-a11y-5" data-section="a11y">
+                <label class="test-label" for="test-a11y-5">Screen reader announces theme changes</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-a11y-6" data-section="a11y">
+                <label class="test-label" for="test-a11y-6">Skip to main content link available</label>
+                <span class="test-result">⏳</span>
+            </div>
+        </div>
+
+        <!-- Performance -->
+        <div class="test-section">
+            <h2>
+                <span>🚀 Performance</span>
+                <span class="status-badge status-pending" id="badge-perf">Pending</span>
+            </h2>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-perf-1" data-section="perf">
+                <label class="test-label" for="test-perf-1">Page load time < 3 seconds</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-perf-2" data-section="perf">
+                <label class="test-label" for="test-perf-2">First Contentful Paint (FCP) < 1.8s</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-perf-3" data-section="perf">
+                <label class="test-label" for="test-perf-3">Largest Contentful Paint (LCP) < 2.5s</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-perf-4" data-section="perf">
+                <label class="test-label" for="test-perf-4">Lighthouse Performance Score > 90</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-perf-5" data-section="perf">
+                <label class="test-label" for="test-perf-5">Lighthouse Accessibility Score > 90</label>
+                <span class="test-result">⏳</span>
+            </div>
+        </div>
+
+        <!-- Browser Compatibility -->
+        <div class="test-section">
+            <h2>
+                <span>🌐 Browser Compatibility</span>
+                <span class="status-badge status-pending" id="badge-browser">Pending</span>
+            </h2>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-browser-1" data-section="browser">
+                <label class="test-label" for="test-browser-1">Chrome (latest): All features working</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-browser-2" data-section="browser">
+                <label class="test-label" for="test-browser-2">Firefox (latest): All features working</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-browser-3" data-section="browser">
+                <label class="test-label" for="test-browser-3">Safari (latest): All features working</label>
+                <span class="test-result">⏳</span>
+            </div>
+            <div class="test-item">
+                <input type="checkbox" class="test-checkbox" id="test-browser-4" data-section="browser">
+                <label class="test-label" for="test-browser-4">Edge (latest): All features working</label>
+                <span class="test-result">⏳</span>
+            </div>
+        </div>
+
+        <div class="test-actions">
+            <button class="btn btn-primary" onclick="runAllTests()">▶️ Run All Tests</button>
+            <button class="btn btn-secondary" onclick="resetTests()">🔄 Reset Tests</button>
+            <button class="btn btn-secondary" onclick="exportReport()">📊 Export Report</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize
+        updateStats();
+        
+        // Event listeners for checkboxes
+        document.querySelectorAll('.test-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const result = this.closest('.test-item').querySelector('.test-result');
+                result.textContent = this.checked ? '✅' : '⏳';
+                updateStats();
+                updateSectionBadges();
+            });
+        });
+
+        function updateStats() {
+            const checkboxes = document.querySelectorAll('.test-checkbox');
+            const total = checkboxes.length;
+            const passed = document.querySelectorAll('.test-checkbox:checked').length;
+            const coverage = total > 0 ? Math.round((passed / total) * 100) : 0;
+            
+            document.getElementById('totalTests').textContent = total;
+            document.getElementById('passedTests').textContent = passed;
+            document.getElementById('failedTests').textContent = 0; // Manual test tracking
+            document.getElementById('coveragePercent').textContent = coverage + '%';
+        }
+
+        function updateSectionBadges() {
+            const sections = ['html', 'css', 'responsive', 'js', 'a11y', 'perf', 'browser'];
+            
+            sections.forEach(section => {
+                const checkboxes = document.querySelectorAll(`[data-section="${section}"]`);
+                const total = checkboxes.length;
+                const checked = document.querySelectorAll(`[data-section="${section}"]:checked`).length;
+                const badge = document.getElementById(`badge-${section}`);
+                
+                if (checked === 0) {
+                    badge.className = 'status-badge status-pending';
+                    badge.textContent = 'Pending';
+                } else if (checked === total) {
+                    badge.className = 'status-badge status-pass';
+                    badge.textContent = 'Pass';
+                } else {
+                    badge.className = 'status-badge status-pending';
+                    badge.textContent = `${checked}/${total}`;
+                }
+            });
+        }
+
+        function runAllTests() {
+            alert('🧪 Manual Testing Required\n\n' +
+                  'This test suite requires manual verification.\n' +
+                  'Please:\n' +
+                  '1. Open the portal in your browser\n' +
+                  '2. Test each item in this checklist\n' +
+                  '3. Check the boxes as you verify each test\n' +
+                  '4. Document any issues found\n\n' +
+                  'For automated testing, use:\n' +
+                  '- Lighthouse (Performance/A11y)\n' +
+                  '- W3C Validator (HTML)\n' +
+                  '- Browser DevTools (Console/Network)');
+        }
+
+        function resetTests() {
+            if (confirm('Reset all test results?')) {
+                document.querySelectorAll('.test-checkbox').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                document.querySelectorAll('.test-result').forEach(result => {
+                    result.textContent = '⏳';
+                });
+                updateStats();
+                updateSectionBadges();
+            }
+        }
+
+        function exportReport() {
+            const checkboxes = document.querySelectorAll('.test-checkbox');
+            const total = checkboxes.length;
+            const passed = document.querySelectorAll('.test-checkbox:checked').length;
+            const coverage = Math.round((passed / total) * 100);
+            
+            let report = '# Portal Test Report\n\n';
+            report += `**Date:** ${new Date().toLocaleDateString()}\n`;
+            report += `**Total Tests:** ${total}\n`;
+            report += `**Passed:** ${passed}\n`;
+            report += `**Coverage:** ${coverage}%\n\n`;
+            
+            report += '## Test Results\n\n';
+            
+            const sections = ['html', 'css', 'responsive', 'js', 'a11y', 'perf', 'browser'];
+            const sectionNames = {
+                'html': 'HTML Structure',
+                'css': 'CSS & Design',
+                'responsive': 'Responsive Design',
+                'js': 'JavaScript',
+                'a11y': 'Accessibility',
+                'perf': 'Performance',
+                'browser': 'Browser Compatibility'
+            };
+            
+            sections.forEach(section => {
+                report += `### ${sectionNames[section]}\n\n`;
+                const boxes = document.querySelectorAll(`[data-section="${section}"]`);
+                boxes.forEach(box => {
+                    const label = box.closest('.test-item').querySelector('.test-label').textContent;
+                    const status = box.checked ? '✅ PASS' : '⏳ PENDING';
+                    report += `- ${status} - ${label}\n`;
+                });
+                report += '\n';
+            });
+            
+            // Download report
+            const blob = new Blob([report], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `portal-test-report-${Date.now()}.md`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
