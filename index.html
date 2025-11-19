@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Team Information Portal - Your centralized resource hub for Architecture, Design, Validation, Training, and Repositories">
+    <meta name="author" content="Team Portal">
+    <meta name="theme-color" content="#0066CC">
+    
+    <title>Team Information Portal</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body data-theme="light">
+    
+    <!-- Header Component -->
+    <header id="header" class="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="/" aria-label="Home">
+                    <span class="logo-icon">🚀</span>
+                    <span class="logo-text">Team Portal</span>
+                </a>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <button class="search-trigger" id="searchTrigger" aria-label="Search" aria-expanded="false">
+                    <span class="search-icon">🔍</span>
+                    <span class="search-placeholder">Search documentation...</span>
+                    <kbd class="search-shortcut">Ctrl+K</kbd>
+                </button>
+            </div>
+            
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <!-- Notifications -->
+                <button class="header-btn" id="notificationsBtn" aria-label="Notifications">
+                    <span class="icon">🔔</span>
+                    <span class="badge" data-count="3">3</span>
+                </button>
+                
+                <!-- Theme Toggle -->
+                <button class="header-btn" id="themeToggle" aria-label="Toggle theme">
+                    <span class="icon theme-icon-light">☀️</span>
+                    <span class="icon theme-icon-dark" style="display: none;">🌙</span>
+                </button>
+                
+                <!-- User Menu -->
+                <button class="header-btn user-menu-btn" id="userMenuBtn" aria-label="User menu" aria-expanded="false">
+                    <span class="icon">👤</span>
+                    <span class="user-name">User</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Search Modal (Hidden by default) -->
+    <div class="search-modal" id="searchModal" role="dialog" aria-modal="true" aria-label="Search" style="display: none;">
+        <div class="search-modal-backdrop" id="searchModalBackdrop"></div>
+        <div class="search-modal-content">
+            <div class="search-input-wrapper">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Search documentation..."
+                    aria-label="Search input"
+                    autocomplete="off"
+                >
+                <button class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <p class="search-hint">Type to search across all sections...</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Container -->
+    <main id="main" class="main-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="sidebar" role="navigation" aria-label="Main navigation">
+            <nav class="sidebar-nav">
+                <!-- Primary Navigation -->
+                <ul class="nav-list" role="list">
+                    <li class="nav-item">
+                        <button class="nav-link expandable" data-section="architecture" aria-expanded="false">
+                            <span class="nav-icon">🏗️</span>
+                            <span class="nav-text">Architecture</span>
+                            <span class="nav-arrow">›</span>
+                        </button>
+                        <ul class="nav-submenu" style="display: none;">
+                            <li><a href="#csme" class="nav-sublink">CSME</a></li>
+                            <li><a href="#cse" class="nav-sublink">CSE</a></li>
+                            <li><a href="#ocs" class="nav-sublink">OCS</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#designers" class="nav-link">
+                            <span class="nav-icon">🎨</span>
+                            <span class="nav-text">Designers</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#validators" class="nav-link">
+                            <span class="nav-icon">✅</span>
+                            <span class="nav-text">Validators</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#training" class="nav-link active">
+                            <span class="nav-icon">📚</span>
+                            <span class="nav-text">Training</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#repositories" class="nav-link">
+                            <span class="nav-icon">💻</span>
+                            <span class="nav-text">Repositories</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <!-- Secondary Navigation -->
+                <div class="nav-divider"></div>
+                
+                <ul class="nav-list nav-secondary" role="list">
+                    <li class="nav-item">
+                        <a href="#favorites" class="nav-link">
+                            <span class="nav-icon">⭐</span>
+                            <span class="nav-text">Favorites</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#recent" class="nav-link">
+                            <span class="nav-icon">🕐</span>
+                            <span class="nav-text">Recent</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- Sidebar Footer -->
+            <div class="sidebar-footer">
+                <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Collapse sidebar">
+                    <span class="icon">◀</span>
+                    <span class="text">Collapse</span>
+                </button>
+            </div>
+        </aside>
+        
+        <!-- Content Area -->
+        <section id="content" class="content-area" role="main">
+            <!-- Breadcrumb Navigation -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item">
+                        <a href="/">🏠 Home</a>
+                    </li>
+                    <li class="breadcrumb-separator">›</li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Getting Started
+                    </li>
+                </ol>
+            </nav>
+            
+            <!-- Page Content -->
+            <div class="content-inner">
+                <h1 class="page-title">Welcome to Team Information Portal</h1>
+                <p class="page-subtitle">Your centralized hub for team resources and documentation</p>
+                
+                <!-- Hero Section -->
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h2>🎉 Portal Under Construction</h2>
+                        <p>We're building something amazing! This portal will soon provide easy access to:</p>
+                        <ul class="feature-list">
+                            <li>📐 Architecture documentation (CSME → CSE → OCS)</li>
+                            <li>🎨 Design resources and guidelines</li>
+                            <li>✅ Validation procedures and testing</li>
+                            <li>📚 Training materials and onboarding</li>
+                            <li>💻 Repository access and contribution guides</li>
+                            <li>🤖 AI-powered assistance for instant answers</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Quick Links Section -->
+                <div class="card-grid">
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-icon">🏗️</span>
+                            <h3 class="card-title">Architecture</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Explore system architecture, component hierarchies, and design patterns.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#architecture" class="card-link">View Section →</a>
+                        </div>
+                    </article>
+                    
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-icon">🎨</span>
+                            <h3 class="card-title">Designers</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Access design systems, UI/UX guidelines, and component libraries.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#designers" class="card-link">View Section →</a>
+                        </div>
+                    </article>
+                    
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-icon">✅</span>
+                            <h3 class="card-title">Validators</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Find testing procedures, quality gates, and validation frameworks.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#validators" class="card-link">View Section →</a>
+                        </div>
+                    </article>
+                    
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-icon">📚</span>
+                            <h3 class="card-title">Training</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Start your onboarding journey with tutorials and learning paths.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#training" class="card-link">View Section →</a>
+                        </div>
+                    </article>
+                    
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-icon">💻</span>
+                            <h3 class="card-title">Repositories</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Quick access to code repositories and contribution guidelines.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#repositories" class="card-link">View Section →</a>
+                        </div>
+                    </article>
+                    
+                    <article class="card card-highlight">
+                        <div class="card-header">
+                            <span class="card-icon">🤖</span>
+                            <h3 class="card-title">AI Assistant</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Ask questions and get instant answers powered by AI (coming soon!).</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="card-link btn-primary" id="openChatBtn">Try AI Chat →</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <!-- AI Chat Panel -->
+        <aside id="chatPanel" class="chat-panel" role="complementary" aria-label="AI Assistant">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <span class="chat-icon">🤖</span>
+                    <span class="chat-title-text">AI Assistant</span>
+                </div>
+                <div class="chat-actions">
+                    <button class="chat-btn" id="chatMinimizeBtn" aria-label="Minimize chat">
+                        <span class="icon">−</span>
+                    </button>
+                    <button class="chat-btn" id="chatCloseBtn" aria-label="Close chat">
+                        <span class="icon">✕</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="chat-body" id="chatBody">
+                <div class="chat-welcome">
+                    <div class="chat-welcome-icon">🤖</div>
+                    <h3>Welcome to AI Assistant!</h3>
+                    <p>I can help you find information quickly. Try asking me:</p>
+                    <ul class="chat-suggestions">
+                        <li>"How do I set up CSME?"</li>
+                        <li>"Where can I find design guidelines?"</li>
+                        <li>"What are the validation procedures?"</li>
+                    </ul>
+                    <p class="chat-note">💡 <strong>Note:</strong> AI backend coming in Week 5-7!</p>
+                </div>
+            </div>
+            
+            <div class="chat-footer">
+                <div class="chat-input-wrapper">
+                    <textarea 
+                        id="chatInput" 
+                        class="chat-input" 
+                        placeholder="Type your question..."
+                        rows="1"
+                        aria-label="Chat input"
+                    ></textarea>
+                    <button class="chat-send-btn" id="chatSendBtn" aria-label="Send message" disabled>
+                        <span class="icon">↑</span>
+                    </button>
+                </div>
+                <p class="chat-hint">Press <kbd>Enter</kbd> to send, <kbd>Shift+Enter</kbd> for new line</p>
+            </div>
+        </aside>
+    </main>
+    
+    <!-- Footer Component -->
+    <footer id="footer" class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <p class="footer-copyright">© 2025 Team Name. All rights reserved.</p>
+                <nav class="footer-nav" aria-label="Footer navigation">
+                    <a href="#help" class="footer-link">Help</a>
+                    <span class="footer-separator">|</span>
+                    <a href="#privacy" class="footer-link">Privacy</a>
+                    <span class="footer-separator">|</span>
+                    <a href="#terms" class="footer-link">Terms</a>
+                    <span class="footer-separator">|</span>
+                    <span class="footer-version">v1.0.0</span>
+                    <span class="footer-separator">|</span>
+                    <span class="footer-updated">Updated: Nov 19, 2025</span>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" style="display: none;"></div>
+    
+    <!-- Scripts -->
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/chat.js"></script>
+    <script src="assets/js/theme.js"></script>
+    
+</body>
+</html>

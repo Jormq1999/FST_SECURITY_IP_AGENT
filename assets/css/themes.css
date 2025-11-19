@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Team Information Portal - Theme Styles
+   ========================================================================== */
+
+/* Theme Transition
+   ========================================================================== */
+body {
+    transition: background-color 300ms ease, color 300ms ease;
+}
+
+.header,
+.sidebar,
+.content-area,
+.chat-panel,
+.footer,
+.card,
+.search-modal-content {
+    transition: background-color 300ms ease, border-color 300ms ease, color 300ms ease;
+}
+
+/* Theme Icons
+   ========================================================================== */
+[data-theme="light"] .theme-icon-light {
+    display: inline;
+}
+
+[data-theme="light"] .theme-icon-dark {
+    display: none;
+}
+
+[data-theme="dark"] .theme-icon-light {
+    display: none;
+}
+
+[data-theme="dark"] .theme-icon-dark {
+    display: inline;
+}
+
+/* Dark Theme Specific Adjustments
+   ========================================================================== */
+[data-theme="dark"] .card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+[data-theme="dark"] .search-modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] code,
+[data-theme="dark"] kbd {
+    background-color: var(--color-bg-tertiary);
+}
+
+/* Smooth Theme Toggle Animation */
+@media (prefers-reduced-motion: no-preference) {
+    :root {
+        --theme-transition: background-color 300ms ease,
+                          color 300ms ease,
+                          border-color 300ms ease;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --theme-transition: none;
+    }
+    
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
